@@ -23,7 +23,7 @@ function sendMessage() {
   client.messages
     .create({
       body: messages[currentMessage],
-      from: '+12014290043',
+      from: process.env.FROM_NUMBER,
       to: process.env.TO_NUMBER
     })
     .then(message => {
@@ -33,7 +33,7 @@ function sendMessage() {
 }
 
 // Schedule a function to run every hour:
-cron.schedule('12 * * * *', ()=> {
+cron.schedule('* 9 * * *', ()=> {
   sendMessage();
   console.log('Message sent!');
 }) // Here, the '0 * * * *' means: Run every hour at 0 minutes
