@@ -16,7 +16,7 @@ const client = require('twilio')(accountSid, authToken);
 
 // Pull in the messages
 const messages = require('./messages')
-const currentMessage = 0;
+var currentMessage = 0;
 
 // Send Message function
 function sendMessage() {
@@ -28,12 +28,14 @@ function sendMessage() {
     })
     .then(message => {
       currentMessage++;
+      console.log(currentMessage);
       console.log(message);
     })
+    .catch(error => console.log(error))
 }
 
 // Schedule a function to run every hour:
-cron.schedule('* 9 * * *', ()=> {
+cron.schedule('* 10 * * *', ()=> {
   sendMessage();
   console.log('Message sent!');
 }) // Here, the '0 * * * *' means: Run every hour at 0 minutes
