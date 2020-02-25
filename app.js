@@ -37,6 +37,6 @@ function sendMessage() {
 cron.schedule('* 9 * * *', ()=> {
   sendMessage();
   console.log('Message sent!');
-}) // Here, the '0 * * * *' means: Run every hour at 0 minutes
+}) // Here, the '0 * * * *' means: Run every hour at 0 minutes 
 
 
