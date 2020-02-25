@@ -7,7 +7,6 @@ if (!process.env.ACCOUNT_SID || !process.env.AUTH_TOKEN) {
   console.log("Couldn't find environmental variables account_sid or auth_token");
   process.exit(1);
 }
-console.log('--- Starting anniversary texts job ---')
 
 // Assign env variables
 const accountSid = process.env.ACCOUNT_SID;
@@ -33,10 +32,12 @@ function sendMessage() {
     .catch(error => console.log(error))
 }
 
+console.log('--- Starting anniversary texts job ---');
+
 // Schedule a function to run every hour:
-cron.schedule('* 9 * * *', ()=> {
+cron.schedule('* 13 * * *', ()=> {
   sendMessage();
   console.log('Message sent!');
-}) // Here, the '0 * * * *' means: Run every hour at 0 minutes 
+}) // Here, the '0 * * * *' means: Run every hour at 0 minutes
 
 
